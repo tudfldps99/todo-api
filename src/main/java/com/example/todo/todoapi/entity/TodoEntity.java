@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tbl_todo")
-public class TodoEntity {
+public class TodoEntity {       // DB와 연결할 때만
 
     @Id
     @GeneratedValue(generator = "system-uuid")      // 랜덤으로 생성

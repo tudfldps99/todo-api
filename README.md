@@ -14,5 +14,9 @@
 12. main/java/com/example/todo/todoapi/entity/TodoEntity.java 생성
 13. 깃에 todo entity 생성이라고 올림
 14. main/java/com/example/todo/todoapi/repository/TodoRepository.java (interface) 생성 후 작성
-15. Ctrl + Shift + t 로 테스트파일 생성 후 작성 (TodoRepositoryTest.java)
+15. Ctrl + Shift + t 로 TodoRepository의 테스트파일 생성 후 작성 (TodoRepositoryTest.java)
 16. main/java/com/example/todo/todoapi/service/TodoService.java 생성 후 작성
+17. main/java/com/example/todo/todoapi/dto/response/TodoListResponseDTO.java 및 TodoDetailResponseDTO 생성 후 작성
+18. main/java/com/example/todo/todoapi/dto/request/TodoCreateRequestDTO.java 생성 후 작성
+19. main/java/com/example/todo/todoapi/dto/request/TodoModifyRequestDTO.java 생성 후 작성
+20. Ctrl + Shift + t 로 TodoService의 테스트파일 생성 후 작성 (TodoRepositoryTest.java)
