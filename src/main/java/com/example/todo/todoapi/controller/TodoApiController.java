@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api/todos")
+// 2023-01-20) CORS 허용 설정
+@CrossOrigin(origins = {"http://127.0.0.1:5501"})       // client 웹의 url
 public class TodoApiController {
     private final TodoService todoService;
 
