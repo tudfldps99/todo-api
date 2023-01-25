@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 @RequestMapping("/api/todos")
 // 2023-01-20) CORS 허용 설정
-@CrossOrigin()       // client 웹의 url       origins = {"http://127.0.0.1:5501"}
+@CrossOrigin(origins = "*" )       // client 웹의 url
 public class TodoApiController {
     private final TodoService todoService;
 
