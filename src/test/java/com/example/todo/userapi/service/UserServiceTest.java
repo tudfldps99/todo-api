@@ -36,12 +36,12 @@ class UserServiceTest {
 
     @Test
     @DisplayName("검증된 회원정보로 가입하면 회원가입에 성공해야 한다.")
-    void createTest() {      // 의도적인 실패 테스트
+    void createTest() {
         // given
         UserSignUpDTO dto = UserSignUpDTO.builder()
-                .email("qwerty@def.com")
-                .password("545454")
-                .userName("랄랄라")
+                .email("tututut@def.com")
+                .password("5678")
+                .userName("암호맨")
                 .build();
 
         // when
@@ -49,6 +49,6 @@ class UserServiceTest {
 
         // then
         System.out.println("responseDTO = " + responseDTO);
-        assertEquals("랄랄라", responseDTO.getUserName());
+        assertEquals("암호맨", responseDTO.getUserName());
     }
 }

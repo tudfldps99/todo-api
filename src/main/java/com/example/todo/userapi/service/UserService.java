@@ -7,6 +7,7 @@ import com.example.todo.userapi.entity.UserEntity;
 import com.example.todo.userapi.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;      // final 로 생성하면 @RequiredArgsConstructor 를 이용하여 자동으로 생성자 주입됨
 
     // 회원가입 처리
     public UserSignUpResponseDTO create(final UserSignUpDTO userSignUpDTO) {
@@ -26,6 +28,11 @@ public class UserService {
             log.warn("Email already exists - {}", email);
             throw new RuntimeException("중복된 이메일입니다.");
         }
+
+        // 패스워드 인코딩
+        String rawPassword = userSignUpDTO.getPassword();   // 평문 패스워드
+        String encodedPassword = passwordEncoder.encode(rawPassword);   // 암호화처리
+        userSignUpDTO.setPassword(encodedPassword);     // 암호화된 패스워드 set
 
         // 회원가입
         UserEntity savedUser = userRepository.save(userSignUpDTO.toEntity());    // DTO 를 Entity 로 변환시킴
