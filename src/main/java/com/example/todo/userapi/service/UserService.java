@@ -27,7 +27,7 @@ public class UserService {
             throw new NoRegisteredArgumentsException("가입정보가 없습니다.");
         }
         final String email = userSignUpDTO.getEmail();
-        if (userRepository.existsByEmail(email)) {      // 이메일 중복검사
+        if (userRepository.existsByEmail(email)) {      // 이메일 중복검사     --> 누군가 클라이언트의 요청을 피해서 중복확인을 했을 때 검사    => 이메일 중복확인은 따로 진행 (하단)
             log.warn("Email already exists - {}", email);
             //throw new RuntimeException("중복된 이메일입니다.");    // -> DuplicatedEmailException.java 생성
             throw new DuplicatedEmailException("중복된 이메일입니다.");
@@ -46,4 +46,13 @@ public class UserService {
         // savedUser 를 그대로 return 하면 클라이언트에게 비밀번호 등 모두 보여주는 것이므로 UserSignUpResponseDTO 에서 dto 로 변환시켜서 return
         return new UserSignUpResponseDTO(savedUser);
     }
+
+    // 이메일 중복확인
+    public boolean isDuplicate(String email) {
+        if (email == null) {
+            throw new RuntimeException("이메일 값이 없습니다.");
+        }
+        return userRepository.existsByEmail(email);
+    }
+
 }
