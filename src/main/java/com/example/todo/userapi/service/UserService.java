@@ -55,4 +55,22 @@ public class UserService {
         return userRepository.existsByEmail(email);
     }
 
+    // 2023-01-27
+    // 로그인 검증
+    public UserEntity getByCredentials(final String email, final String rawPassword) {
+
+        // 입력한 이메일을 통해 회원정보 조회
+        UserEntity originalUser = userRepository.findByEmail(email);
+        if (originalUser == null) {        // 가입 X
+            throw new RuntimeException("가입된 회원이 아닙니다.");
+        }
+
+        // 패스워드 검증 (입력 비번과 DB에 저장된 비번 대조)
+        if (!passwordEncoder.matches(rawPassword, originalUser.getPassword())) {        // !입력비번.equals(DB비번)  =  !passwordEncoder.matches(입력비번, DB비번)
+            throw new RuntimeException("비밀번호가 틀렸습니다.");
+        }
+        log.info("{}님 로그인 성공!", originalUser.getUserName());
+
+        return originalUser;        // 로그인 한 회원의 정보를 return
+    }
 }
