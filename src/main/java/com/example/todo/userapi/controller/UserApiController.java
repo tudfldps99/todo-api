@@ -1,6 +1,8 @@
 // 2023-01-26
 package com.example.todo.userapi.controller;
 
+import com.example.todo.userapi.dto.LoginRequestDTO;
+import com.example.todo.userapi.dto.LoginResponseDTO;
 import com.example.todo.userapi.dto.UserSignUpDTO;
 import com.example.todo.userapi.dto.UserSignUpResponseDTO;
 import com.example.todo.userapi.exception.DuplicatedEmailException;
@@ -74,5 +76,30 @@ public class UserApiController {
         return ResponseEntity
                 .ok()
                 .body(flag);
+    }
+
+    // 2023-01-27
+    // 로그인 요청 처리
+    // 로그인 요청 처리
+    @PostMapping("/signin")
+    public ResponseEntity<?> signIn(
+            @Validated @RequestBody LoginRequestDTO requestDTO) {
+
+        try {
+            LoginResponseDTO userInfo = userService.getByCredentials(
+                    requestDTO.getEmail(),
+                    requestDTO.getPassword()
+            );
+            return ResponseEntity
+                    .ok()
+                    .body(userInfo);
+        } catch (RuntimeException e) {      // 가입을 안했거나, 비밀번호가 틀렸거나
+            return ResponseEntity
+                    .badRequest()
+                    .body(LoginResponseDTO.builder()
+                            .message(e.getMessage())
+                            .build()
+                    );
+        }
     }
 }

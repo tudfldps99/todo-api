@@ -1,6 +1,7 @@
 // 2023-01-26
 package com.example.todo.userapi.service;
 
+import com.example.todo.userapi.dto.LoginResponseDTO;
 import com.example.todo.userapi.dto.UserSignUpDTO;
 import com.example.todo.userapi.dto.UserSignUpResponseDTO;
 import com.example.todo.userapi.entity.UserEntity;
@@ -94,7 +95,8 @@ class UserServiceTest {
         String password = "test12!@";
 
         // when
-        UserEntity loginUser = userService.getByCredentials(email, password);
+        //UserEntity loginUser = userService.getByCredentials(email, password);
+        LoginResponseDTO loginUser = userService.getByCredentials(email, password);
 
         // then
         assertEquals("테스트", loginUser.getUserName());
