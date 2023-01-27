@@ -21,3 +21,25 @@
 19. main/java/com/example/todo/todoapi/dto/request/TodoModifyRequestDTO.java 생성 후 작성
 20. Ctrl + Shift + t 로 TodoService의 테스트파일 생성 후 작성 (TodoRepositoryTest.java)
 21. main/java/com/example/todo/todoapi/controller/TodoApiController.java 생성 후 작성
+
+---
+http://localhost:8080/join  GET    <=== join.html
+
+http://localhost:3000/signup      <=== Join.js 라우팅\
+http://localhost:8080/signup    <=== 회원가입 요청\
+http://localhost:3000/login     <=== Login.js 라우팅
+---
+JWT
+
+{\
+"sub" : 토큰 식별값,\
+"iss" : 토큰 발급자 정보,\
+"iat" : 언제발급했는지 시간정보,\
+"exp": 토큰 만료시간\
+}\
+서명 (위조확인)
+---
+공통 코드 처리 (로그 출력, 요청헤더 파싱, 세션 검사, 쿠키 검사)
+1. 필터 : 프론트 컨트롤러 앞에서 작동
+2. 인터셉터 : 하위 컨트롤러 앞뒤에서 작동
+3. AOP : 각 메서드 앞뒤에도 작동

@@ -18,4 +18,8 @@ public interface TodoRepository extends JpaRepository<TodoEntity, String> {
     // 2023-01-27
     // 특정 회원의 할일 목록 조회
     List<TodoEntity> findByUserId(String userId);
+    /*
+        @Query("select t from TodoEntity t where t.user.id=:userId")
+        List<TodoEntity> findByUser(@Param(value = "userId") String user_id);
+     */
 }
