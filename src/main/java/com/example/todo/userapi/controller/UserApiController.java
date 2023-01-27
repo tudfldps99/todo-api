@@ -80,7 +80,6 @@ public class UserApiController {
 
     // 2023-01-27
     // 로그인 요청 처리
-    // 로그인 요청 처리
     @PostMapping("/signin")
     public ResponseEntity<?> signIn(
             @Validated @RequestBody LoginRequestDTO requestDTO) {

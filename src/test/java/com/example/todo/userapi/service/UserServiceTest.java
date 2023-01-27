@@ -100,5 +100,7 @@ class UserServiceTest {
 
         // then
         assertEquals("테스트", loginUser.getUserName());
+
+        System.out.println(loginUser);
     }
 }
