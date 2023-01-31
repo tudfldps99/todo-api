@@ -74,7 +74,8 @@ tasks.named('test') {
 
 ** 재빌드 시 [build clean] 우선 실행 (화면 오른쪽 Gradle 에서 todo/build/clean)
 
-### WAR 배포 설정
+### WAR 배포 설정 
+-> 톰캣에 올려야 함
 ``` 
 // build.gradle(todo)
 plugins {

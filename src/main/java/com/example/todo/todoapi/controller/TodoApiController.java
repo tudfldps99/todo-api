@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/api/todos")
 // 2023-01-20) CORS 허용 설정
 // 2023-01-31) CrossOrigin 주석 처리 -> /config/CorsConfig.java
-//@CrossOrigin(origins = "*" )       // client 웹의 url
+@CrossOrigin(origins = "*" )       // client 웹의 url
 public class TodoApiController {
     private final TodoService todoService;
 
