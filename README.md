@@ -46,3 +46,50 @@ JWT{
 1. 필터 : 프론트 컨트롤러 앞에서 작동
 2. 인터셉터 : 하위 컨트롤러 앞뒤에서 작동
 3. AOP : 각 메서드 앞뒤에도 작동
+---
+
+## 빌드
+### JAR 배포 설정
+
+- 방법 1: 터미널에서 실행
+```
+./gradlew build
+```
+-> 테스트를 먼저 돌림 (시간이 지나도 구조가 변하지 않는 테스트로 만들어야 함)
+
+-> 빌드 시 테스트 하지 않도록
+build.gradle 파일 수정
+
+```
+// build.gradle(todo)
+tasks.named('test') {
+//	useJUnitPlatform()		// 주석 처리 후 아래 코드 추가
+	exclude '**/*'		// 빌드 시 테스트 생략
+}
+```
+
+- 방법 2 : IntelliJ에서 실행 - 화면 오른쪽 Gradle 에서 todo/build/build 실행 돌려도 됨
+
+=> build 폴더 생성 확인 : build/libs/todo-0.0.1-SNAPSHOT.jar
+
+** 재빌드 시 [build clean] 우선 실행 (화면 오른쪽 Gradle 에서 todo/build/clean)
+
+### WAR 배포 설정
+``` 
+// build.gradle(todo)
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.7'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'war'        // 추가
+}
+
+// 추가
+war {
+	archiveName 'ROOT.war'
+}
+
+bootWar.enabled = false  // 내장 was를 비활성화
+war.enabled = true
+```
+=> build 폴더 생성 확인 : build/libs/ROOT.war
