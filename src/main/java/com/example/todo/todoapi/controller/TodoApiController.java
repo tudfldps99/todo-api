@@ -1,4 +1,4 @@
-// TODO: 2023-01-18
+// 2023-01-18
 package com.example.todo.todoapi.controller;
 
 import com.example.todo.todoapi.dto.request.TodoCreateRequestDTO;
@@ -20,7 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 @RequiredArgsConstructor
 @RequestMapping("/api/todos")
 // 2023-01-20) CORS 허용 설정
-@CrossOrigin(origins = "*" )       // client 웹의 url
+// 2023-01-31) CrossOrigin 주석 처리 -> /config/CorsConfig.java
+//@CrossOrigin(origins = "*" )       // client 웹의 url
 public class TodoApiController {
     private final TodoService todoService;
 
