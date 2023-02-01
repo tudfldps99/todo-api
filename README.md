@@ -1,3 +1,6 @@
+# 중요
+실무에서는 properties 파일 Git에 업로드 금지
+
 # 순서
 (2023-01-18)
 1. https://start.spring.io/ 에서 프로젝트 다운로드
@@ -103,3 +106,25 @@ war.enabled = true
 -Dspring.profiles.active=deployJ
 ```
 추가 후 main 실행하면 변경됨
+---
+
+JAR 파일 putty 에서 실행
+```
+sudo su
+
+// deploy/bootJar 브랜치로
+git fetch	
+git pull origin deploy/bootJar
+
+[spring-boot-todo] 	chmod 777 gradlew
+
+[libs]				vi ~/.bashrc		// export profile=deployJ 하단에 추가
+
+[libs]				source ~/.bashrc
+[libs]				echo $profile		// deployJ 출력되는지 확인
+
+[spring-boot-todo] 	vi src/main/resources/application.properties		// spring.profiles.active=${profile} 상단에 추가
+
+[spring-boot-todo] 	./gradlew clean build
+[spring-boot-todo] 	java -jar ./build/libs/todo-0.0.1-SNAPSHOT.jar		// 실행
+```
