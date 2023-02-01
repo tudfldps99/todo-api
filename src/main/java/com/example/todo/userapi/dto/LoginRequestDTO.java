@@ -21,6 +21,6 @@ public class LoginRequestDTO {
     private String email;
 
     @NotBlank
-    @Size(min = 8, max = 20)
+    @Size(min = 8, max = 20, message = "잘못된 비밀번호입니다.")
     private String password;
 }
