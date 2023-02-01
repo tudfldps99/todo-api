@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/auth")        // 공통 URL
 // 2023-01-31) CrossOrigin 주석 처리 -> /config/CorsConfig.java
-@CrossOrigin
+//@CrossOrigin
 public class UserApiController {
 
     private final UserService userService;

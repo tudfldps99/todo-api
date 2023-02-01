@@ -49,7 +49,7 @@ JWT{
 ---
 
 ## 빌드
-### JAR 배포 설정
+### JAR 배포 설정 (기본 세팅)
 
 - 방법 1: 터미널에서 실행
 ```
@@ -94,3 +94,12 @@ bootWar.enabled = false  // 내장 was를 비활성화
 war.enabled = true
 ```
 => build 폴더 생성 확인 : build/libs/ROOT.war
+
+---
+- application-deployJ.properties 추가 시
+
+실행/디버그 구성(상단 구성편집) -> 옵션 수정 -> VM 옵션 추가 -> 
+```
+-Dspring.profiles.active=deployJ
+```
+추가 후 main 실행하면 변경됨
