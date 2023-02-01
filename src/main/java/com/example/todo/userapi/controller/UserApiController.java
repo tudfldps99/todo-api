@@ -83,7 +83,15 @@ public class UserApiController {
     // 로그인 요청 처리
     @PostMapping("/signin")
     public ResponseEntity<?> signIn(
-            @Validated @RequestBody LoginRequestDTO requestDTO) {
+            @Validated @RequestBody LoginRequestDTO requestDTO,
+            BindingResult result) {
+
+        if (result.hasErrors()) {
+            log.warn(result.toString());
+            return ResponseEntity
+                    .badRequest()
+                    .body(result.toString());
+        }
 
         try {
             LoginResponseDTO userInfo = userService.getByCredentials(
