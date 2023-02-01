@@ -72,6 +72,7 @@ tasks.named('test') {
 ```
 
 - 방법 2 : IntelliJ에서 실행 - 화면 오른쪽 Gradle 에서 todo/build/build 실행 돌려도 됨
+![img_1.png](img_1.png)
 
 => build 폴더 생성 확인 : build/libs/todo-0.0.1-SNAPSHOT.jar
 
@@ -105,10 +106,13 @@ war.enabled = true
 ```
 -Dspring.profiles.active=deployJ
 ```
-추가 후 main 실행하면 변경됨
+![img_2.png](img_2.png)
+![img.png](img.png)
+추가 후 main 재실행하면 변경됨
+
 ---
 
-JAR 파일 putty 에서 실행
+### JAR 파일 putty 에서 실행
 ```
 sudo su
 
@@ -118,13 +122,27 @@ git pull origin deploy/bootJar
 
 [spring-boot-todo] 	chmod 777 gradlew
 
-[libs]				vi ~/.bashrc		// export profile=deployJ 하단에 추가
+[libs]			vi ~/.bashrc		// export profile=deployJ 하단에 추가
 
-[libs]				source ~/.bashrc
-[libs]				echo $profile		// deployJ 출력되는지 확인
+[libs]			source ~/.bashrc
+[libs]			echo $profile		// deployJ 출력되는지 확인
 
 [spring-boot-todo] 	vi src/main/resources/application.properties		// spring.profiles.active=${profile} 상단에 추가
 
 [spring-boot-todo] 	./gradlew clean build
 [spring-boot-todo] 	java -jar ./build/libs/todo-0.0.1-SNAPSHOT.jar		// 실행
+
+
+---
+(git reset --hard master			// master 브랜치로 되돌아가기)
+
+---
+
+[spring-boot-todo]	vi ~/.bashrc		// root 폴더에 있는 숨겨진 파일 bashrc 수정
+						// export rds_url=jdbc:mariadb://practice-database.cyeqzgo8kpvc.ap-northeast-2.rds.amazonaws.com:3306/hellodb
+						// export rds_username=root
+						// export rds_password=abc1234! 
+						// 하단에 위의 export 코드 3줄 추가				
+                        source ~/.bashrc	// bashrc 코드를 수정하면 'source ~/.bashrc' 재입력해줘야 함
+                                                // brew나 nodejs를 설치할 때 등 bash나 zsh 파일 설정 적용하는 과정에서 항상 필요한 명령어. 부팅 시 이러한 설정파일을 로드하게 되는데, 리부팅 없이 이를 즉시 적용하기 위해서 source 명령어를 사용.
 ```
