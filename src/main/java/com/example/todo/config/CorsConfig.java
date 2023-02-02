@@ -13,7 +13,8 @@ public class CorsConfig implements WebMvcConfigurer {
         // api cors 정책 설정
         registry.addMapping("/api/**")
                 .allowedOrigins("http://localhost:3000"
-                        , "http://practice-s3-psy-bucket001.s3-website.ap-northeast-2.amazonaws.com")        // api 요청 허용 URL (2023-02-01 추가)
+                        , "http://practice-s3-psy-bucket001.s3-website.ap-northeast-2.amazonaws.com"
+                        , "http://todo-app-park-230201.s3-website.ap-northeast-2.amazonaws.com")        // api 요청 허용 URL (2023-02-01 추가)
                 .allowedMethods("GET", "POST", "PUT", "DELETE") // api 요청 허용 메소드
                 .allowedHeaders("*")
                 .allowCredentials(true)     // 자격증명

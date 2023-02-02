@@ -116,6 +116,7 @@ war.enabled = true
 ```
 sudo su
 
+
 // deploy/bootJar 브랜치로
 git fetch	
 git pull origin deploy/bootJar
@@ -139,7 +140,7 @@ git pull origin deploy/bootJar
 ---
 
 [spring-boot-todo]	vi ~/.bashrc		// root 폴더에 있는 숨겨진 파일 bashrc 수정
-						// export rds_url=jdbc:mariadb://practice-database.cyeqzgo8kpvc.ap-northeast-2.rds.amazonaws.com:3306/hellodb
+						// export rds_url=jdbc:mariadb://[DB hostname]:3306/[DB Schema]
 						// export rds_username=root
 						// export rds_password=abc1234! 
 						// 하단에 위의 export 코드 3줄 추가				
